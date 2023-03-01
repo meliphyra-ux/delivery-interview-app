@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Shantell Sans', cursive;
+}
+
+@layer components {
+  .universal-padding {
+    @apply lg:px-[12.5%] md:px-12 px-6
+  }
+  .pizza-information-flex{
+    @apply flex justify-between
+  }
+}
