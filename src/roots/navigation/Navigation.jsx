@@ -4,15 +4,16 @@ import { Link, Outlet } from 'react-router-dom';
 
 import AuthButton from '../../components/auth-button/Auth-button';
 import CartIcon from '../../components/cart-icon/Cart-icon';
+import { Box, Typography } from '@mui/material';
 
 const Navigation = () => {
   const { user } = useAuth0();
   
   return (
     <>
-      <div className="lg:px-[12.5%] md:px-12 px-6 py-7 w-full flex justify-between">
-        <Link to="/" className="lg:text-4xl text-2xl font-semibold">
-          Pizza app
+      <Box className="lg:px-[12.5%] md:px-12 px-6 py-7 w-full flex justify-between">
+        <Link to="/">
+          <Typography variant='h4'>Mike's pizza</Typography>
         </Link>
         <nav
           className={`flex justify-between ${
@@ -27,7 +28,7 @@ const Navigation = () => {
           )}
         <CartIcon />
         </nav>
-      </div>
+      </Box>
       <Outlet />
     </>
   );

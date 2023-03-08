@@ -1,11 +1,10 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import { createUserFromAuth0, getPizzas } from './firebase/app';
+import { createUserFromAuth0 } from './firebase/app';
 import './App.scss';
 import Navigation from './roots/navigation/Navigation';
 import { useDispatch } from 'react-redux';
-import { fetchPizzas } from './store/pizza/pizzasSlice';
 const Home = lazy(() => import('./roots/home/Home'));
 const Dashboard = lazy(() => import('./roots/dashboard/Dashboard'));
 const Cart = lazy(() => import('./roots/cart/Cart'));
@@ -16,9 +15,6 @@ function App() {
   useEffect(() => {
     createUserFromAuth0(user)
   }, [user]);
-  useEffect(()=>{
-    dispatch(fetchPizzas)
-  },[])
   return (
     <BrowserRouter>
       <Suspense>

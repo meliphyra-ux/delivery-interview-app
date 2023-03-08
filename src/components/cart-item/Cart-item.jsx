@@ -6,26 +6,29 @@ import {
 } from '../../store/cart/cartActions';
 
 const CartItem = ({ pizza }) => {
-  const { image, name, price, counter, weight } = pizza;
+  const { image, name, counter } = pizza;
+  const { price, weight } = pizza.selectedVariant
 
   const handleRemovePizza = useCallback(() => {
     removePizzaFromCart(pizza);
   }, []);
+  
   const handleAddPizza = useCallback(() => {
     addPizzaToCart(pizza);
   }, []);
+
   const handleClearPizza = useCallback(() => {
     clearPizzaFromCart(pizza);
   }, []);
+
   return (
-    <div className="pizza-information-flex h-32 items-center">
+    <div className="pizza-information-flex h-32 items-center p-2">
       <img
-        className="rounded-[50%] aspect-square"
-        width={125}
+        className="w-[20%] max-w-[125px] rounded-[50%] aspect-square"
         src={image}
         alt={name}
       />
-      <p className="w-[20%] text-center text-xl">Pizza {name}</p>
+      <p className="w-[20%] text-center lg:text-xl">Pizza {name}</p>
       <div className="pizza-information-flex items-center w-1/10">
         <span className="cursor-pointer" onClick={handleRemovePizza}>
           {'<'}
@@ -36,7 +39,7 @@ const CartItem = ({ pizza }) => {
         </span>
       </div>
       <p>{weight}g</p>
-      <p>{price}</p>
+      <p>{parseInt(price) * counter}$</p>
       <span className="cursor-pointer" onClick={handleClearPizza}>
         x
       </span>
