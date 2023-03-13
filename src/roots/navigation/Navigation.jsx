@@ -5,7 +5,8 @@ import { Link, Outlet } from 'react-router-dom';
 
 import AuthButton from '../../components/auth-button/Auth-button';
 import CartIcon from '../../components/cart-icon/Cart-icon';
-import { Box, Typography, Menu, MenuItem, Button } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
+import DashboardMenu from '../../components/dashboard-menu/Dashboard-menu';
 
 const Navigation = () => {
   const { user } = useAuth0();
@@ -22,11 +23,15 @@ const Navigation = () => {
   };
   return (
     <>
-      <Box className="lg:px-[12.5%] md:px-12 px-6 py-7 w-full flex justify-between">
+      <Box className="lg:px-[12.5%] md:px-12 px-6 py-7 w-full flex justify-between sticky top-0 left-0 z-[110] bg-[rgba(255,255,255,0.8)]"
+      style={{
+        backdropFilter: 'blur(2px)'
+      }}
+      >
         <Link to="/">
           <Typography variant="h4">Mike's pizza</Typography>
         </Link>
-        <Box
+        <div
           component="nav"
           className="flex justify-between w-1/5 min-w-fit items-center lg:text-2xl"
         >
@@ -39,37 +44,19 @@ const Navigation = () => {
                 color: 'black',
                 textAlign: 'center',
                 fontSize: '18px',
+                textTransform: 'none'
               }}
             >
               Dashboard
             </Button>
           )}
-          <Menu
-            className="ml-4 lg:ml-0"
+          <DashboardMenu
             open={open}
+            handleClose={handleClose}
             anchorEl={anchorEl}
-            onClose={handleClose}
-          >
-            <Link to="/dashboard">
-              <MenuItem
-                sx={{
-                  fontSize: '18px',
-                }}
-              >
-                Your profile
-              </MenuItem>
-            </Link>
-            <MenuItem
-              sx={{
-                display: 'flex',
-                justifyContent: 'center ',
-              }}
-            >
-              <AuthButton />
-            </MenuItem>
-          </Menu>
+          />
           <CartIcon />
-        </Box>
+        </div>
       </Box>
       <Outlet />
     </>

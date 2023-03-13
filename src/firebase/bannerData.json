@@ -1,8 +1,12 @@
 [
     {
-        "src": "/banner-1.jpg"
+        "src": "/banner-1.jpg",
+        "title": "Drop off",
+        "description": "Buy 1 get 2"
     },
     {
-        "src": "/banner-2.jpg"
+        "src": "/banner-2.jpg",
+        "title": "Party variant",
+        "description": "Buy 3 get 4"
     }
 ]

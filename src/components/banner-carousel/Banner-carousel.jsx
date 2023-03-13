@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import photoData from '../../firebase/bannerData.json';
+import bannerData from '../../firebase/bannerData.json';
 import CarouselItem from '../carousel-item/Carousel-item';
 import { Button } from '@mui/material';
 
@@ -7,7 +7,7 @@ const BannerCarousel = () => {
   const [counter, setCounter] = useState(0);
 
   const incrementCounter = () => {
-    setCounter(counter < photoData.length - 1 ? counter + 1 : 0)
+    setCounter(counter < bannerData.length - 1 ? counter + 1 : 0)
   }
 
   useEffect(() => {
@@ -20,12 +20,12 @@ const BannerCarousel = () => {
       incrementCounter()
     }
     else{
-      setCounter(counter !== 0 ? counter - 1 : photoData.length - 1)
+      setCounter(counter !== 0 ? counter - 1 : bannerData.length - 1)
     }
   }
   
   return (
-    <div className="flex flex-row justify-center aspect-video w-full relative items-center sm:block">
+    <div className="hidden flex-row justify-center aspect-video w-full relative items-center sm:flex">
       <Button sx={{
         fontSize: '48px',
         position: 'absolute',
@@ -36,8 +36,8 @@ const BannerCarousel = () => {
         height: '100%'
       }} onClick={() => handleCount('decrement')}>{'<'}</Button>
       <div className="flex flex-none w-full justify-start overflow-hidden">
-        {photoData.map(({src}, id) => (
-          <CarouselItem key={id} counter={counter} src={src} /> 
+        {bannerData.map((banner, id) => (
+          <CarouselItem key={id} counter={counter} banner={banner} /> 
         ))}
       </div>
       <Button sx={{
