@@ -1,22 +1,20 @@
 import { useAuth0 } from '@auth0/auth0-react';
 
+import styled from '@emotion/styled';
+
 import { Button } from '@mui/material';
+
+const StyledButton = styled(Button)`
+  color: #000000;
+  textalign: center;
+  fontsize: 18px;
+  texttransform: none;
+`;
 
 const AuthButton = () => {
   const { loginWithPopup, user, logout, isLoading } = useAuth0();
   if (isLoading) {
-    return (
-      <Button
-        sx={{
-          color: 'black',
-          textAlign: 'center',
-          fontSize: '18px',
-          textTransform: 'none ',
-        }}
-      >
-        Loading...
-      </Button>
-    );
+    return <StyledButton>Loading...</StyledButton>;
   }
   const handleAuth = () => {
     user
@@ -24,18 +22,14 @@ const AuthButton = () => {
       : loginWithPopup();
   };
   return (
-    <Button
+    <StyledButton
       sx={{
-        color: 'black',
-        textAlign: 'center',
-        fontSize: '18px',
-        textTransform: 'none',
-        width: user ? '100%' : 'fit-content'
+        width: user ? '100%' : 'fit-content',
       }}
       onClick={handleAuth}
     >
       {user ? 'Logout' : 'Login '}
-    </Button>
+    </StyledButton>
   );
 };
 

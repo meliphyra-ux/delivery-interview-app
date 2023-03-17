@@ -11,7 +11,7 @@ const CartContent = () => {
   const cartCost = useMemo(() => {
     return cart.reduce(
       (accumulator, currentValue) =>
-        accumulator + parseInt(currentValue.price) * currentValue.counter,
+        accumulator + parseInt(currentValue.selectedVariant.price) * currentValue.counter,
       0
     );
   }, [cart]);

@@ -1,1 +1,1 @@
-export const selectModalStatus = (state) => state.modal
+export const selectModalStatus = (state) => state.modal.isOpen

@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   addPizzaToCart,
   clearPizzaFromCart,
@@ -6,19 +7,20 @@ import {
 } from '../../store/cart/cartActions';
 
 const CartItem = ({ pizza }) => {
+  const dispatch = useDispatch();
   const { image, name, counter } = pizza;
-  const { price, weight } = pizza.selectedVariant
+  const { price, weight } = pizza.selectedVariant;
 
   const handleRemovePizza = useCallback(() => {
-    removePizzaFromCart(pizza);
+    dispatch(removePizzaFromCart(pizza));
   }, []);
-  
+
   const handleAddPizza = useCallback(() => {
-    addPizzaToCart(pizza);
+    dispatch(addPizzaToCart(pizza));
   }, []);
 
   const handleClearPizza = useCallback(() => {
-    clearPizzaFromCart(pizza);
+    dispatch(clearPizzaFromCart(pizza));
   }, []);
 
   return (

@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addPizzaToCart } from '../../store/cart/cartActions';
 import {
@@ -13,26 +14,28 @@ import {
   Skeleton,
   Typography,
 } from '@mui/material';
+import { toggleModal } from '../../store/modal/modalActions';
 
 const PizzaCard = ({ pizza }) => {
   const { isLoading, user } = useAuth0();
+  const dispatch = useDispatch();
   const { image, name, variants } = pizza;
   const [selectedVariant, setSelectedVariant] = useState(variants[0]);
 
   const handleAddPizza = useCallback(() => {
-    console.log(pizza)
     if (!user) {
-      console.log(user);
-      alert('Login to take pizza to cart');
+      dispatch(toggleModal('To add pizza to your cart, please, login into your account'))
       return;
     }
-    addPizzaToCart({
-      id: name + selectedVariant.size,
-      counter: 1,
-      selectedVariant,
-      image,
-      name,
-    });
+    dispatch(
+      addPizzaToCart({
+        id: name + selectedVariant.size,
+        counter: 1,
+        selectedVariant,
+        image,
+        name,
+      })
+    );
   }, [user, selectedVariant]);
   return (
     <>
@@ -68,7 +71,7 @@ const PizzaCard = ({ pizza }) => {
         </Card>
       ) : (
         <Box>
-          <Skeleton variant='rounded' height={275} />
+          <Skeleton variant="rounded" height={275} />
           <Skeleton height={100} />
           <Skeleton height={35} />
         </Box>

@@ -10,6 +10,7 @@ const Dashboard = lazy(() => import('./roots/dashboard/Dashboard'));
 const Cart = lazy(() => import('./roots/cart/Cart'));
 
 import './App.scss';
+import ModalWindow from './components/modal-window/Modal-window';
 
 const App = () => {
   const { user } = useAuth0();
@@ -27,6 +28,7 @@ const App = () => {
           </Route>
         </Routes>
       </Suspense>
+      <ModalWindow />
     </BrowserRouter>
   );
 }

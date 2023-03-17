@@ -1,53 +1,18 @@
+import { createAction } from '../actionCreator';
 import { store } from '../store';
 
-const findPizzaInCart = (pizza) => {
-  const state = store.getState().cart.cart;
-  const findedPizza = state.find((cartPizza) => pizza.id === cartPizza.id);
-  return findedPizza;
+// Actions
+export const CART_ACTIONS = {
+  ADD_PIZZA_TO_CART: 'cart/ADD_PIZZA_TO_CART',
+  REMOVE_PIZZA_FROM_CART: 'cart/REMOVE_PIZZA_FROM_CART',
+  CLEAR_PIZZA_FROM_CART: 'cart/CLEAR_PIZZA_FROM_CART',
 };
 
-export const clearPizzaFromCart = (pizza) => {
-  const state = store.getState().cart.cart;
-  const newState = state.filter((cartPizza) => pizza !== cartPizza);
-  const newCounter = newState.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.counter,
-    0
-  );
-  store.dispatch({
-    type: 'cart/clearPizzaFromCart',
-    payload: { newState, newCounter },
-  });
-};
+export const clearPizzaFromCart = (pizza) =>
+  createAction(CART_ACTIONS.CLEAR_PIZZA_FROM_CART, pizza);
 
-export const addPizzaToCart = (pizza) => {
-  const state = store.getState().cart.cart;
-  const findedPizza = findPizzaInCart(pizza);
-  if (!findedPizza) {
-    store.dispatch({ type: 'cart/addPizzaToCart', payload: [...state, pizza] });
-  } else {
-    const newState = state.map((cartPizza) =>
-      pizza.id === cartPizza.id
-        ? { ...cartPizza, counter: cartPizza.counter + 1 }
-        : cartPizza
-    );
-    store.dispatch({ type: 'cart/addPizzaToCart', payload: newState });
-  }
-};
+export const addPizzaToCart = (pizza) =>
+  createAction(CART_ACTIONS.ADD_PIZZA_TO_CART, pizza);
 
-export const removePizzaFromCart = (pizza) => {
-  const state = store.getState().cart.cart;
-  const findedPizza = findPizzaInCart(pizza);
-  if (findedPizza.counter === 1) {
-    clearPizzaFromCart(pizza);
-  } else {
-    const newState = state.map((cartPizza) =>
-      findedPizza === cartPizza
-        ? {
-            ...cartPizza,
-            counter: cartPizza.counter - 1,
-          }
-        : cartPizza
-    );
-    store.dispatch({ type: 'cart/removePizzaFromCart', payload: newState });
-  }
-};
+export const removePizzaFromCart = (pizza) =>
+  createAction(CART_ACTIONS.REMOVE_PIZZA_FROM_CART, pizza);
