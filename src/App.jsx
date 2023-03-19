@@ -6,7 +6,7 @@ import { createUserFromAuth0 } from './firebase/app';
 import Navigation from './roots/navigation/Navigation';
 
 const Home = lazy(() => import('./roots/home/Home'));
-const Dashboard = lazy(() => import('./roots/dashboard/Dashboard'));
+const MyOrders = lazy(() => import('./roots/my-orders/My-orders'));
 const Cart = lazy(() => import('./roots/cart/Cart'));
 
 import './App.scss';
@@ -23,7 +23,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="my-orders" element={<MyOrders />} />
             <Route path="cart" element={<Cart />} />
           </Route>
         </Routes>

@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addPizzaToCart } from '../../store/cart/cartActions';
 import {
@@ -15,6 +15,23 @@ import {
   Typography,
 } from '@mui/material';
 import { toggleModal } from '../../store/modal/modalActions';
+import styled from '@emotion/styled';
+
+const StyledCard = styled(Card)`
+  & {
+    img {
+      transition: all 1s ease;
+    }
+    div{
+      overflow: hidden;
+    }
+  }
+  &:hover {
+    img {
+      transform: scale(1.2);
+    }
+  }
+`;
 
 const PizzaCard = ({ pizza }) => {
   const { isLoading, user } = useAuth0();
@@ -24,7 +41,11 @@ const PizzaCard = ({ pizza }) => {
 
   const handleAddPizza = useCallback(() => {
     if (!user) {
-      dispatch(toggleModal('To add pizza to your cart, please, login into your account'))
+      dispatch(
+        toggleModal(
+          'To add pizza to your cart, please, login into your account'
+        )
+      );
       return;
     }
     dispatch(
@@ -40,8 +61,10 @@ const PizzaCard = ({ pizza }) => {
   return (
     <>
       {!isLoading ? (
-        <Card className="flex gap-2 flex-col p-2 sketchy">
-          <CardMedia component="img" image={image}></CardMedia>
+        <StyledCard className="flex gap-2 flex-col p-2 sketchy">
+          <div>
+            <CardMedia component="img" image={image}></CardMedia>
+          </div>
           <Typography variant="h5">Pizza {name}</Typography>
           <Divider />
           <RadioGroup row className="pizza-information-flex">
@@ -68,7 +91,7 @@ const PizzaCard = ({ pizza }) => {
           >
             Add to cart
           </Button>
-        </Card>
+        </StyledCard>
       ) : (
         <Box>
           <Skeleton variant="rounded" height={275} />

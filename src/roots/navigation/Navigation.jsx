@@ -6,7 +6,7 @@ import { Link, Outlet } from 'react-router-dom';
 import AuthButton from '../../components/auth-button/Auth-button';
 import CartIcon from '../../components/cart-icon/Cart-icon';
 import { Box, Typography, Button } from '@mui/material';
-import DashboardMenu from '../../components/dashboard-menu/Dashboard-menu';
+import DashboardMenu from '../../components/user-menu/Dashboard-menu';
 
 const Navigation = () => {
   const { user } = useAuth0();

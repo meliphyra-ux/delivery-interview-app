@@ -11,13 +11,13 @@ const DashboardMenu = ({ open, anchorEl, handleClose }) => {
       anchorEl={anchorEl}
       onClose={handleClose}
     >
-      <Link to="/dashboard">
+      <Link to="/my-orders">
         <MenuItem
           sx={{
             fontSize: '18px',
           }}
         >
-          Your profile
+          My orders
         </MenuItem>
       </Link>
       <AuthButton />

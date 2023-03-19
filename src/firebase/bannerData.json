@@ -1,12 +1,12 @@
 [
     {
         "src": "/banner-1.jpg",
-        "title": "Drop off",
-        "description": "Buy 1 get 2"
+        "title": "Best pizza in the city",
+        "description": "Only fresh ingredients"
     },
     {
         "src": "/banner-2.jpg",
-        "title": "Party variant",
-        "description": "Buy 3 get 4"
+        "title": "Crispy, with rich flavor",
+        "description": "Ideal party variant"
     }
 ]

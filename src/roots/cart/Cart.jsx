@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 import CartContent from '../../components/cart-content/Cart-content';
 import AuthButton from '../../components/auth-button/Auth-button';
+import { Typography } from '@mui/material';
 
 const Cart = () => {
   const { user, isLoading } = useAuth0();
@@ -14,9 +15,9 @@ const Cart = () => {
         <CartContent />
       ) : (
         <div className="universal-padding flex items-center flex-col justify-center min-h-[calc(100vh-200px)]">
-          <h2 className="text-2xl">Hey, you haven't login yet.</h2>
-          <p className="text-lg">You can do it right now</p>
-          <div className="sketchy px-4 py-2">
+          <Typography variant="h4">Hey, you haven't login yet.</Typography>
+          <Typography variant="h5">You can do it right now</Typography>
+          <div className="sketchy px-4">
             <AuthButton />
           </div>
         </div>

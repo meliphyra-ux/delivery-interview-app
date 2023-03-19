@@ -6,7 +6,10 @@ import {
   doc,
   getDoc,
   setDoc,
-  getDocs
+  getDocs,
+  addDoc,
+  query,
+  where
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -58,8 +61,33 @@ export const createUserFromAuth0 = async (user) => {
 };
 
 export const getPizzas = async () => {
-  const arrayOfPizzas = []
+  const arrayOfPizzas = [];
   const querySnapshot = await getDocs(collection(db, "pizza's"));
-  querySnapshot.forEach(doc => arrayOfPizzas.push(doc.data()))
-  return arrayOfPizzas
-}
+  querySnapshot.forEach((doc) => arrayOfPizzas.push(doc.data()));
+  return arrayOfPizzas;
+};
+
+export const submitOrder = async (cart, phoneNumber, email) => {
+  const collectionRef = collection(db, 'orders');
+  const docRef = await addDoc(collectionRef, {
+    order: cart,
+    phoneNumber,
+    email,
+  });
+  return await getDoc(docRef);
+};
+
+export const getOrders = async (userEmail) => {
+  try {
+    let orders = [];
+    const ordersRef = query(collection(db, 'orders'), where('email', '==', userEmail));
+    const response = await getDocs(ordersRef);
+    response.forEach(item => orders.push({
+      id: item.id,
+      ...item.data()
+    }))
+    return orders;
+  } catch (err) {
+    console.log(err);
+  }
+};

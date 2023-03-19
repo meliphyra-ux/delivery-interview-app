@@ -6,9 +6,9 @@ import { Button } from '@mui/material';
 
 const StyledButton = styled(Button)`
   color: #000000;
-  textalign: center;
-  fontsize: 18px;
-  texttransform: none;
+  text-align: center;
+  font-size: 18px;
+  text-transform: none;
 `;
 
 const AuthButton = () => {
