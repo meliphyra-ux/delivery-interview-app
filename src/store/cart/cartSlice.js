@@ -63,6 +63,13 @@ const cartSlice = (state = initialState, action) => {
         counter: newState.reduce((prev, current) => prev + current.counter, 0),
         cart: [...newState],
       };
+    case CART_ACTIONS.CLEAR_CART: {
+      return {
+        ...state,
+        counter: 0,
+        cart: [],
+      };
+    }
     default:
       return state;
   }

@@ -67,7 +67,7 @@ const PizzaCard = ({ pizza }) => {
           </div>
           <Typography variant="h5">Pizza {name}</Typography>
           <Divider />
-          <RadioGroup row className="pizza-information-flex">
+          <RadioGroup row className="pizza-information-flex items-center">
             {variants.map((variant) => (
               <FormControlLabel
                 key={variant.size}

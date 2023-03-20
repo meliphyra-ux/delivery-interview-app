@@ -9,7 +9,8 @@ import {
   getDocs,
   addDoc,
   query,
-  where
+  where,
+  serverTimestamp
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -73,6 +74,7 @@ export const submitOrder = async (cart, phoneNumber, email) => {
     order: cart,
     phoneNumber,
     email,
+    time: serverTimestamp()
   });
   return await getDoc(docRef);
 };

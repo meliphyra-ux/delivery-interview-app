@@ -3,17 +3,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { selectCart } from '../../store/cart/cartSelectors';
+import { clearCart } from '../../store/cart/cartActions';
+import { toggleModal } from '../../store/modal/modalActions';
 
 import CartItem from '../cart-item/Cart-item';
 import { Box, Button, Divider, Typography } from '@mui/material';
 import { submitOrder } from '../../firebase/app';
-import { toggleModal } from '../../store/modal/modalActions';
 
 const CartContent = () => {
   const dispatch = useDispatch();
-  const { user } = useAuth0();
   const cart = useSelector(selectCart);
+  const { user } = useAuth0();
   const [phoneNumber, setPhoneNumber] = useState('');
+
   const cartCost = useMemo(() => {
     return cart.reduce(
       (accumulator, currentValue) =>
@@ -36,9 +38,11 @@ const CartContent = () => {
         submitOrder(cart, phoneNumber, user.email);
         message = 'Order submited successfully';
       }
+      dispatch(clearCart());
+      setPhoneNumber('')
       dispatch(toggleModal(message));
     } catch (err) {
-      dispatch(toggleModal('Order can\'t be submited'))
+      dispatch(toggleModal("Order can't be submited"));
     }
   };
 
