@@ -1,19 +1,24 @@
 import styled from '@emotion/styled';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 const OrderBox = styled(Box)`
   display: flex;
   width: 100%;
+  align-items: center;
   justify-content: space-between;
+  margin: 10px 0;
 `;
 
 const Order = ({ orderParams }) => {
-  const { id, time } = orderParams;
+  const { id, time, totalPrice } = orderParams;
   console.log();
   return (
     <OrderBox>
-      <span>{id}</span>
-      <span>{time.toDate().toDateString()}</span>
+      <Typography variant='body1'>{id}</Typography>
+      <div>
+        <Typography variant='body1'>{totalPrice}$</Typography>
+        <Typography variant='body1'>{time.toDate().toDateString()}</Typography>
+      </div>
     </OrderBox>
   );
 };

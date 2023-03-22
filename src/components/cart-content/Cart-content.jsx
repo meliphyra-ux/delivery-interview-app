@@ -14,9 +14,9 @@ const CartContent = () => {
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
   const { user } = useAuth0();
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('+380');
 
-  const cartCost = useMemo(() => {
+  const totalPrice = useMemo(() => {
     return cart.reduce(
       (accumulator, currentValue) =>
         accumulator +
@@ -25,27 +25,26 @@ const CartContent = () => {
     );
   }, [cart]);
 
-  const handlePhoneNumber = (e) => setPhoneNumber(e.target.value);
+  const handlePhoneNumber = (e) => setPhoneNumber('+380' + e.target.value.slice(4));
 
   const onSumbit = async () => {
     let message;
     try {
-      if (phoneNumber.length === 0 || !phoneNumber.startsWith('+380')) {
-        message = 'Enter valid Ukrainian phone number (starts with +380)';
+      if (phoneNumber.length < 9) {
+        message = 'Enter valid Ukrainian phone number';
       } else if (cart.length === 0) {
         message = 'Fill up your cart with items';
       } else {
-        submitOrder(cart, phoneNumber, user.email);
+        submitOrder(cart, phoneNumber, user.email, totalPrice);
         message = 'Order submited successfully';
+        dispatch(clearCart());
+        setPhoneNumber('');
       }
-      dispatch(clearCart());
-      setPhoneNumber('')
       dispatch(toggleModal(message));
     } catch (err) {
       dispatch(toggleModal("Order can't be submited"));
     }
   };
-
   return (
     <div className="universal-padding">
       <Typography variant="h5">Cart</Typography>
@@ -58,7 +57,7 @@ const CartContent = () => {
         )}
       </Box>
       <Box className="flex items-center justify-between mt-4">
-        <Typography variant="h6">Total price: {cartCost}$</Typography>
+        <Typography variant="h6">Total price: {totalPrice}$</Typography>
         <input
           className="sketchy px-4 pt-3 pb-2"
           type="tel"

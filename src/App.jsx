@@ -11,11 +11,12 @@ const Cart = lazy(() => import('./roots/cart/Cart'));
 
 import './App.scss';
 import ModalWindow from './components/modal-window/Modal-window';
+import OrderDetails from './roots/order-details/Order-details';
 
 const App = () => {
   const { user } = useAuth0();
   useEffect(() => {
-    createUserFromAuth0(user)
+    createUserFromAuth0(user);
   }, [user]);
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />
             <Route path="my-orders" element={<MyOrders />} />
+              <Route path="/my-orders/:id" element={<OrderDetails />} /> 
             <Route path="cart" element={<Cart />} />
           </Route>
         </Routes>
@@ -31,6 +33,6 @@ const App = () => {
       <ModalWindow />
     </BrowserRouter>
   );
-}
+};
 
 export default App;

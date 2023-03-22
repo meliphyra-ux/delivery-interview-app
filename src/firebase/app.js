@@ -68,13 +68,14 @@ export const getPizzas = async () => {
   return arrayOfPizzas;
 };
 
-export const submitOrder = async (cart, phoneNumber, email) => {
+export const submitOrder = async (cart, phoneNumber, email, totalPrice) => {
   const collectionRef = collection(db, 'orders');
   const docRef = await addDoc(collectionRef, {
     order: cart,
     phoneNumber,
     email,
-    time: serverTimestamp()
+    time: serverTimestamp(),
+    totalPrice
   });
   return await getDoc(docRef);
 };
