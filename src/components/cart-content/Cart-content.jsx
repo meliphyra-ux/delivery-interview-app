@@ -35,7 +35,7 @@ const CartContent = () => {
       } else if (cart.length === 0) {
         message = 'Fill up your cart with items';
       } else {
-        submitOrder(cart, phoneNumber, user.email, totalPrice);
+        submitOrder(cart, phoneNumber, user.email, `${totalPrice}\$`);
         message = 'Order submited successfully';
         dispatch(clearCart());
         setPhoneNumber('');
@@ -46,7 +46,7 @@ const CartContent = () => {
     }
   };
   return (
-    <div className="universal-padding">
+    <Box className="universal-padding">
       <Typography variant="h5">Cart</Typography>
       <Divider />
       <Box className="mt-4 overflow-y-auto h-[65vh]">
@@ -77,7 +77,7 @@ const CartContent = () => {
           Submit order
         </Button>
       </Box>
-    </div>
+    </Box>
   );
 };
 
