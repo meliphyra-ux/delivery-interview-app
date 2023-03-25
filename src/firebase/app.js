@@ -10,7 +10,8 @@ import {
   addDoc,
   query,
   where,
-  serverTimestamp
+  serverTimestamp,
+  orderBy
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -82,14 +83,9 @@ export const submitOrder = async (cart, phoneNumber, email, totalPrice) => {
 
 export const getOrders = async (userEmail) => {
   try {
-    let orders = [];
-    const ordersRef = query(collection(db, 'orders'), where('email', '==', userEmail));
+    const ordersRef = query(collection(db, 'orders'), orderBy('time', 'desc'), where('email', '==', userEmail));
     const response = await getDocs(ordersRef);
-    response.forEach(item => orders.push({
-      id: item.id,
-      ...item.data()
-    }))
-    return orders;
+    return response
   } catch (err) {
     console.log(err);
   }

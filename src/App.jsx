@@ -25,7 +25,12 @@ const App = () => {
         createUserFromAuth0(user),
       ]).then(([orders]) => {
         orders.value.forEach((order) => {
-          dispatch(loadOrders(order));
+          dispatch(
+            loadOrders({
+              id: order.id,
+              ...order.data(),
+            })
+          );
         });
       });
     }

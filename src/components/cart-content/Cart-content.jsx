@@ -6,7 +6,7 @@ import { selectCart } from '../../store/cart/cartSelectors';
 import { clearCart } from '../../store/cart/cartActions';
 import { toggleModal } from '../../store/modal/modalActions';
 
-import CartItem from '../cart-item/Cart-item';
+import OrderItem from '../order-item/Order-item';
 import { Box, Button, Divider, Typography } from '@mui/material';
 import { submitOrder } from '../../firebase/app';
 
@@ -25,7 +25,8 @@ const CartContent = () => {
     );
   }, [cart]);
 
-  const handlePhoneNumber = (e) => setPhoneNumber('+380' + e.target.value.slice(4));
+  const handlePhoneNumber = (e) =>
+    setPhoneNumber('+380' + e.target.value.slice(4));
 
   const onSumbit = async () => {
     let message;
@@ -51,7 +52,9 @@ const CartContent = () => {
       <Divider />
       <Box className="mt-4 overflow-y-auto h-[65vh]">
         {cart.length > 0 ? (
-          cart.map((pizza) => <CartItem key={pizza.id} pizza={pizza} />)
+          cart.map((pizza) => (
+            <OrderItem key={pizza.id} pizza={pizza} hasControls={true} />
+          ))
         ) : (
           <Typography variant="h6">You have no items in cart 🍕</Typography>
         )}

@@ -8,7 +8,7 @@ const OrderDetails = () => {
     <Box className="universal-padding">
       <Typography variant="h5">Order №{id}</Typography>
       <Divider />
-      <OrderDetailsContent id={id} /> 
+      <OrderDetailsContent id={id} />
     </Box>
   );
 };

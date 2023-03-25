@@ -1,6 +1,5 @@
 import { Typography, Divider, Box } from '@mui/material';
 import OrdersList from '../../components/orders-list/Orders-list';
-import { useEffect } from 'react';
 
 const MyOrders = () => {
   return (
