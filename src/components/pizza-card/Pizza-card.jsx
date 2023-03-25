@@ -1,7 +1,11 @@
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
+
 import { addPizzaToCart } from '../../store/cart/cartActions';
+import { toggleModal } from '../../store/modal/modalActions';
+
+import styled from '@emotion/styled';
 import {
   Box,
   Button,
@@ -14,15 +18,13 @@ import {
   Skeleton,
   Typography,
 } from '@mui/material';
-import { toggleModal } from '../../store/modal/modalActions';
-import styled from '@emotion/styled';
 
 const StyledCard = styled(Card)`
   & {
     img {
       transition: all 1s ease;
     }
-    div{
+    div {
       overflow: hidden;
     }
   }

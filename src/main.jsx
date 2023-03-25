@@ -5,13 +5,14 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { Auth0Provider } from '@auth0/auth0-react';
 
-import { store } from './store/store';
+import { store, persistor } from './store/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import { fetchPizzas } from './store/pizza/pizzasSlice';
 
 import './index.css';
 
-store.dispatch(fetchPizzas)
+store.dispatch(fetchPizzas);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -23,7 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       }}
     >
       <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </Provider>
     </Auth0Provider>
   </React.StrictMode>

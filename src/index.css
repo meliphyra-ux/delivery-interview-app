@@ -17,3 +17,9 @@
     @apply flex justify-between
   }
 }
+
+@media screen and (max-width: 525px) {
+  html{
+    font-size: 12px;
+  }  
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect, memo } from 'react';
-import { Skeleton } from '@mui/material';
+
 import styled from '@emotion/styled';
+import { Skeleton } from '@mui/material';
 
 const StyledSkeleton = styled(Skeleton)`
   margin: 10px 0;

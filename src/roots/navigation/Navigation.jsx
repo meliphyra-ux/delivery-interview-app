@@ -5,8 +5,9 @@ import { Link, Outlet } from 'react-router-dom';
 
 import AuthButton from '../../components/auth-button/Auth-button';
 import CartIcon from '../../components/cart-icon/Cart-icon';
-import { Box, Typography, Button } from '@mui/material';
 import DashboardMenu from '../../components/user-menu/Dashboard-menu';
+
+import { Box, Typography, Button } from '@mui/material';
 
 const Navigation = () => {
   const { user } = useAuth0();
@@ -23,10 +24,11 @@ const Navigation = () => {
   };
   return (
     <>
-      <Box className="lg:px-[12.5%] md:px-12 px-6 py-7 w-full flex justify-between sticky top-0 left-0 z-[110] bg-[rgba(255,255,255,0.8)]"
-      style={{
-        backdropFilter: 'blur(2px)'
-      }}
+      <Box
+        className="lg:px-[12.5%] md:px-12 px-6 py-7 w-full flex justify-between sticky top-0 left-0 z-[110] bg-[rgba(255,255,255,0.8)]"
+        style={{
+          backdropFilter: 'blur(2px)',
+        }}
       >
         <Link to="/">
           <Typography variant="h4">Mike's pizza</Typography>
@@ -44,7 +46,7 @@ const Navigation = () => {
                 color: 'black',
                 textAlign: 'center',
                 fontSize: '18px',
-                textTransform: 'none'
+                textTransform: 'none',
               }}
             >
               Dashboard

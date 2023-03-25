@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
+
 import styled from '@emotion/styled';
 import { Box, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 const OrderBox = styled(Box)`
   display: flex;
@@ -14,7 +15,7 @@ const Order = ({ orderParams }) => {
   const { id, time, totalPrice } = orderParams;
   console.log();
   return (
-    <Link className='w-full' to={id}>
+    <Link className="w-full" to={id}>
       <OrderBox>
         <Typography variant="body1">{id}</Typography>
         <div>

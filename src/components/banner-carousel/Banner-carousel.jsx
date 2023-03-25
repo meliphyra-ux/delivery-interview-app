@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
+
 import bannerData from '../../firebase/bannerData.json';
+
 import CarouselItem from '../carousel-item/Carousel-item';
+
+import styled from '@emotion/styled';
 import { Button } from '@mui/material';
 
 const ArrowButton = styled(Button)`
@@ -19,7 +22,7 @@ const BannerCarousel = () => {
   const incrementCounter = () => {
     setCounter(counter < bannerData.length - 1 ? counter + 1 : 0);
   };
-  
+
   const handleCount = (type) => {
     if (type === 'increment') {
       incrementCounter();

@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+
 import { selectCounter } from '../../store/cart/cartSelectors';
 
 import { Link } from 'react-router-dom';
@@ -11,7 +12,7 @@ const CartIcon = () => {
   return (
     <Link className="ml-4 mb-[10px] lg:ml-0 relative" to="/cart">
       <Badge badgeContent={counter} color="secondary">
-        <ShoppingBag fontSize='large'/>
+        <ShoppingBag fontSize="large" />
       </Badge>
     </Link>
   );

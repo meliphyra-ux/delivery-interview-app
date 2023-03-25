@@ -1,14 +1,16 @@
-import { Fragment } from 'react';
-import Order from '../order/Order';
-import { Divider } from '@mui/material';
-
-import { MemoizedOrderListLoader } from '../order-list-loader/Order-list-loader';
-import { StyledBox } from '../building-blocks/building-blocks';
 import { useSelector } from 'react-redux';
+import { Fragment } from 'react';
+
 import { selectOrders } from '../../store/orders/ordersSelectors';
 
+import Order from '../order/Order';
+import { MemoizedOrderListLoader } from '../order-list-loader/Order-list-loader';
+
+import { Divider } from '@mui/material';
+import { StyledBox } from '../building-blocks/building-blocks';
+
 const OrdersList = () => {
-  const orders = useSelector(selectOrders)
+  const orders = useSelector(selectOrders);
   return (
     <StyledBox>
       {Object.values(orders).length === 0 ? (

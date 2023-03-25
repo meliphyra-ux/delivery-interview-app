@@ -5,8 +5,8 @@ import {
   selectModalStatus,
   selectModalText,
 } from '../../store/modal/modalSelectors';
-import styled from '@emotion/styled';
 
+import styled from '@emotion/styled';
 import { Box, Button, Modal, Typography } from '@mui/material';
 
 const ModalBox = styled(Box)`
@@ -32,7 +32,7 @@ const ModalWindow = () => {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        backgroundColor: 'transperent'
+        backgroundColor: 'transperent',
       }}
     >
       <ModalBox>
@@ -45,14 +45,17 @@ const ModalWindow = () => {
         >
           {text}
         </Typography>
-        <Button sx={{
-          width: '100%',
-          color: '#f2f2f2',
-          paddingTop: '0.5rem',
-          backgroundColor: '#222222',
-        }}
-        onClick={handleClose}
-        >Close</Button>
+        <Button
+          sx={{
+            width: '100%',
+            color: '#f2f2f2',
+            paddingTop: '0.5rem',
+            backgroundColor: '#222222',
+          }}
+          onClick={handleClose}
+        >
+          Close
+        </Button>
       </ModalBox>
     </Modal>
   );

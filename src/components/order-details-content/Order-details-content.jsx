@@ -1,9 +1,12 @@
-import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
+import { Fragment } from 'react';
+
+import { selectOrder } from '../../store/orders/ordersSelectors';
+
+import OrderItem from '../order-item/Order-item';
+
 import { Divider, Skeleton, Typography } from '@mui/material';
 import { StyledBox } from '../building-blocks/building-blocks';
-import { selectOrder } from '../../store/orders/ordersSelectors';
-import OrderItem from '../order-item/Order-item';
 
 const OrderDetailsContent = ({ id }) => {
   const orderDetails = useSelector(selectOrder(id));

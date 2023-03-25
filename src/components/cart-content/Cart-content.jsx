@@ -2,13 +2,15 @@ import { useMemo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 
+import { submitOrder } from '../../firebase/app';
 import { selectCart } from '../../store/cart/cartSelectors';
 import { clearCart } from '../../store/cart/cartActions';
 import { toggleModal } from '../../store/modal/modalActions';
 
 import OrderItem from '../order-item/Order-item';
+
 import { Box, Button, Divider, Typography } from '@mui/material';
-import { submitOrder } from '../../firebase/app';
+import { StyledUniversalContainer } from '../building-blocks/building-blocks';
 
 const CartContent = () => {
   const dispatch = useDispatch();
@@ -47,7 +49,7 @@ const CartContent = () => {
     }
   };
   return (
-    <Box className="universal-padding">
+    <StyledUniversalContainer>
       <Typography variant="h5">Cart</Typography>
       <Divider />
       <Box className="mt-4 overflow-y-auto h-[65vh]">
@@ -80,7 +82,7 @@ const CartContent = () => {
           Submit order
         </Button>
       </Box>
-    </Box>
+    </StyledUniversalContainer>
   );
 };
 
