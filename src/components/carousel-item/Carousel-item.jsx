@@ -18,9 +18,10 @@ const CarouselItem = ({ counter, banner: { src, title, description } }) => {
           {title}
         </Typography>
         <Typography
-          variant="h5"
+          variant="body2"
           sx={{
             margin: '20px 0',
+            fontSize: '24px'
           }}
         >
           {description}
@@ -34,6 +35,7 @@ const CarouselItem = ({ counter, banner: { src, title, description } }) => {
           transform: `translateX(-${counter * 100}%)`,
         }}
         src={src}
+        alt={title}
       />
     </Box>
   );

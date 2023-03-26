@@ -10,9 +10,9 @@ import { ShoppingBag } from '@mui/icons-material';
 const CartIcon = () => {
   const counter = useSelector(selectCounter);
   return (
-    <Link className="ml-4 mb-[10px] lg:ml-0 relative" to="/cart">
+    <Link className="ml-4 mb-[10px] lg:ml-0 relative" to="/cart" title='Cart'>
       <Badge badgeContent={counter} color="secondary">
-        <ShoppingBag fontSize="large" />
+        <ShoppingBag fontSize="large"/>
       </Badge>
     </Link>
   );
