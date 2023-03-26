@@ -20,6 +20,7 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (user && user.email) {
+      console.log('Settled')
       Promise.allSettled([
         getOrders(user.email),
         createUserFromAuth0(user),
