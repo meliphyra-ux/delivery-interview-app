@@ -34,6 +34,8 @@ const CarouselItem = ({ counter, banner: { src, title, description } }) => {
           transition: 'transform 0.3s ease',
           transform: `translateX(-${counter * 100}%)`,
         }}
+        width={1600}
+        height={900}
         src={src}
         alt={title}
       />

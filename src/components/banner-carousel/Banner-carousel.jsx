@@ -37,7 +37,7 @@ const BannerCarousel = () => {
   }, [counter]);
 
   return (
-    <div className="hidden flex-row justify-center aspect-video w-full relative items-center sm:flex">
+    <div className="hidden flex-row justify-center aspect-video w-full relative items-center sm:flex max-w-[1600px]">
       <ArrowButton
         sx={{
           left: 0,

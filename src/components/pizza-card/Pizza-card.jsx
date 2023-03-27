@@ -65,7 +65,7 @@ const PizzaCard = ({ pizza }) => {
       {!isLoading ? (
         <StyledCard className="flex gap-2 flex-col p-2 sketchy">
           <div>
-            <CardMedia component="img" image={image} alt={'Pizza ' + name}></CardMedia>
+            <CardMedia component="img" image={image} alt={'Pizza ' + name} width={300} height={250}></CardMedia>
           </div>
           <Typography variant="h5">Pizza {name}</Typography>
           <Divider />

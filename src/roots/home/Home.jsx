@@ -9,7 +9,7 @@ import { StyledUniversalContainer } from '../../components/building-blocks/build
 const Home = () => {
   const pizzasList = useSelector(selectPizzas);
   return (
-    <StyledUniversalContainer className="min-h-[calc(100vh-200px)]">
+    <StyledUniversalContainer className="min-h-[calc(100vh-200px)] flex flex-col items-center">
       <BannerCarousel />
       {pizzasList.map((pizzaType) => (
         <PizzaCategory key={pizzaType.title} pizzaType={pizzaType} />
