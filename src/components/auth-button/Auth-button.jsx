@@ -1,15 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 
-import styled from '@emotion/styled';
+import { StyledButton } from '../building-blocks/building-blocks'
 
-import { Button } from '@mui/material';
-
-const StyledButton = styled(Button)`
-  color: #000000;
-  text-align: center;
-  font-size: 18px;
-  text-transform: none;
-`;
 
 const AuthButton = () => {
   const { loginWithPopup, user, logout, isLoading } = useAuth0();

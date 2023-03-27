@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import styled from '@emotion/styled';
 
 export const StyledBox = styled(Box)`
@@ -30,4 +30,12 @@ export const StyledUniversalContainer = styled(Box)`
   @media (min-width: 1024px) {
     padding: 0 12.5%;
   }
+`;
+
+
+export const StyledButton = styled(Button)`
+  color: #000000;
+  text-align: center;
+  font-size: 18px;
+  text-transform: none;
 `;
