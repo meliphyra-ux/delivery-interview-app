@@ -1,10 +1,15 @@
 import { getPizzas } from "../../firebase/app";
+import { createAction } from "../actionCreator";
+
+const PIZZAS_ACTIONS = {
+  PIZZAS_FETCHED: 'pizzas/PIZZAS_FETCHED',
+}
 
 const initialState = [];
 
 const pizzasSlice = (state = initialState, action) => {
   switch (action.type) {
-    case 'pizzas/PIZZAS_FETCHED':
+    case PIZZAS_ACTIONS.PIZZAS_FETCHED:
       return action.payload
     default:
       return state;
@@ -13,7 +18,7 @@ const pizzasSlice = (state = initialState, action) => {
 
 export default pizzasSlice;
 
-export const fetchPizzas = async (dispatch) => {
+export const fetchPizzas = () => async (dispatch) => {
   const response = await getPizzas()
-  dispatch({ type: 'pizzas/PIZZAS_FETCHED', payload: response })
+  dispatch(createAction(PIZZAS_ACTIONS.PIZZAS_FETCHED, response)) 
 }

@@ -18,6 +18,7 @@ import {
   Skeleton,
   Typography,
 } from '@mui/material';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const StyledCard = styled(Card)`
   & {
@@ -65,7 +66,8 @@ const PizzaCard = ({ pizza }) => {
       {!isLoading ? (
         <StyledCard className="flex gap-2 flex-col p-2 sketchy">
           <div>
-            <CardMedia component="img" image={image} alt={'Pizza ' + name} width={300} height={250}></CardMedia>
+            {/* <CardMedia component="img" image={image} alt={'Pizza ' + name} width={300} height={250}></CardMedia> */}
+            <LazyLoadImage src={image} alt={'Pizza ' + name} width={300} height={250} />
           </div>
           <Typography variant="h5">Pizza {name}</Typography>
           <Divider />

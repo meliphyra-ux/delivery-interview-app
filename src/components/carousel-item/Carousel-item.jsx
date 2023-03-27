@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const CarouselItem = ({ counter, banner: { src, title, description } }) => {
   return (
@@ -27,7 +28,7 @@ const CarouselItem = ({ counter, banner: { src, title, description } }) => {
           {description}
         </Typography>
       </Box>
-      <img
+      <LazyLoadImage
         className="object-cover aspect-video"
         style={{
           display: 'inline-block',

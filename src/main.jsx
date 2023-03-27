@@ -8,11 +8,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { store, persistor } from './store/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import { fetchPizzas } from './store/pizza/pizzasSlice';
-
 import './index.css';
-
-store.dispatch(fetchPizzas);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
