@@ -14,7 +14,7 @@ const Home = () => {
   const pizzasList = useSelector(selectPizzas);
   useEffect(() => {
     dispatch(fetchPizzas())
-  })
+  }, [])
   return (
     <StyledUniversalContainer className="min-h-[calc(100vh-200px)] flex flex-col items-center">
       <BannerCarousel />

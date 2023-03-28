@@ -1,6 +1,6 @@
 import OrdersList from '../../components/orders-list/Orders-list';
 
-import { Typography, Divider, Box } from '@mui/material';
+import { Typography, Divider } from '@mui/material';
 import { StyledUniversalContainer } from '../../components/building-blocks/building-blocks';
 
 const MyOrders = () => {
