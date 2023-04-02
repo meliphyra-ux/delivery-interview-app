@@ -4,17 +4,11 @@ import bannerData from '../../firebase/bannerData.json';
 
 import CarouselItem from '../carousel-item/Carousel-item';
 
-import styled from '@emotion/styled';
-import { Button } from '@mui/material';
-
-const ArrowButton = styled(Button)`
-  font-size: 48px;
-  position: absolute;
-  top: 0;
-  z-index: 100;
-  color: #f2f2f2;
-  height: 100%;
-`;
+import {
+  ArrowButton,
+  BannerCarouselBox,
+  BannerImagesContainer,
+} from '../building-blocks/building-blocks';
 
 const BannerCarousel = () => {
   const [counter, setCounter] = useState(0);
@@ -31,35 +25,26 @@ const BannerCarousel = () => {
     }
   };
 
+  const handleIncrement = () => handleCount('increment');
+  const handleDecrement = () => handleCount('decrement');
+
   useEffect(() => {
-    let timer = setInterval(() => incrementCounter(), 5000);
+    let timer = setInterval(() => incrementCounter(), 7000);
     return () => clearInterval(timer);
   }, [counter]);
 
   return (
-    <div className="hidden flex-row justify-center aspect-video w-full relative items-center sm:flex max-w-[1600px]">
-      <ArrowButton
-        sx={{
-          left: 0,
-        }}
-        onClick={() => handleCount('decrement')}
-      >
+    <BannerCarouselBox>
+      <ArrowButton position="left" onClick={handleDecrement}>
         {'<'}
       </ArrowButton>
-      <div className="flex flex-none w-full justify-start overflow-hidden">
+      <BannerImagesContainer>
         {bannerData.map((banner, id) => (
           <CarouselItem key={id} id={id} counter={counter} banner={banner} />
         ))}
-      </div>
-      <ArrowButton
-        sx={{
-          right: 0,
-        }}
-        onClick={() => handleCount('increment')}
-      >
-        {'>'}
-      </ArrowButton>
-    </div>
+      </BannerImagesContainer>
+      <ArrowButton onClick={handleIncrement}>{'>'}</ArrowButton>
+    </BannerCarouselBox>
   );
 };
 

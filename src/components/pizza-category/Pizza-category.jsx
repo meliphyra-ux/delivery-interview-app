@@ -4,11 +4,11 @@ import { Divider, Typography } from '@mui/material';
 
 const PizzaCategory = ({ pizzaType }) => {
   return (
-    <div>
+    <div className='w-full'>
       <Typography
         variant="h4"
         sx={{
-          marginTop: '16px',
+          marginTop: '16px'
         }}
       >
         {pizzaType.title}
