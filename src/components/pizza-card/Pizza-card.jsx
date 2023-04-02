@@ -5,12 +5,13 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { addPizzaToCart } from '../../store/cart/cartActions';
 import { toggleModal } from '../../store/modal/modalActions';
 
+import { BannerImage } from '../building-blocks/building-blocks';
+
 import styled from '@emotion/styled';
 import {
   Box,
   Button,
   Card,
-  CardMedia,
   Divider,
   FormControlLabel,
   Radio,
@@ -18,7 +19,6 @@ import {
   Skeleton,
   Typography,
 } from '@mui/material';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const StyledCard = styled(Card)`
   & {
@@ -65,9 +65,13 @@ const PizzaCard = ({ pizza }) => {
     <>
       {!isLoading ? (
         <StyledCard className="flex gap-2 flex-col p-2 sketchy">
-          <div>
-            {/* <CardMedia component="img" image={image} alt={'Pizza ' + name} width={300} height={250}></CardMedia> */}
-            <LazyLoadImage src={image} alt={'Pizza ' + name} width={300} height={250} />
+          <div className='overflow-hidden'>
+            <BannerImage
+              src={image}
+              alt={'Pizza ' + name}
+              width={300}
+              height={250}
+            />
           </div>
           <Typography variant="h5">Pizza {name}</Typography>
           <Divider />
