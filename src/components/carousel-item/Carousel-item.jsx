@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const CarouselItem = ({ counter, banner: { src, title, description } }) => {
+const CarouselItem = ({ counter, banner: { src, title, description }}) => {
   return (
     <Box className="w-full flex-none relative">
       <Box
@@ -35,7 +35,7 @@ const CarouselItem = ({ counter, banner: { src, title, description } }) => {
           transition: 'transform 0.3s ease',
           transform: `translateX(-${counter * 100}%)`,
         }}
-        width={1600}
+        width={1200}
         height={900}
         src={src}
         alt={title}

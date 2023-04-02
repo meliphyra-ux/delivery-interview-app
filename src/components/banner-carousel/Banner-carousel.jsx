@@ -48,7 +48,7 @@ const BannerCarousel = () => {
       </ArrowButton>
       <div className="flex flex-none w-full justify-start overflow-hidden">
         {bannerData.map((banner, id) => (
-          <CarouselItem key={id} counter={counter} banner={banner} />
+          <CarouselItem key={id} id={id} counter={counter} banner={banner} />
         ))}
       </div>
       <ArrowButton
