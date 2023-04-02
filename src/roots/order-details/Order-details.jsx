@@ -9,7 +9,7 @@ const OrderDetails = () => {
   const { id } = useParams();
   return (
     <StyledUniversalContainer>
-      <Typography variant="h5">Order №{id}</Typography>
+      <Typography variant="h5">Order {id}</Typography>
       <Divider />
       <OrderDetailsContent id={id} />
     </StyledUniversalContainer>

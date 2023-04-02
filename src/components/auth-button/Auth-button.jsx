@@ -15,9 +15,7 @@ const AuthButton = () => {
   };
   return (
     <StyledButton
-      sx={{
-        width: user ? '100%' : 'fit-content',
-      }}
+      isLoggedIn={Boolean(user)}
       onClick={handleAuth}
     >
       {user ? 'Logout' : 'Login '}

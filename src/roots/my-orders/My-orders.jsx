@@ -6,7 +6,7 @@ import { StyledUniversalContainer } from '../../components/building-blocks/build
 const MyOrders = () => {
   return (
     <StyledUniversalContainer>
-      <Typography variant="h5">My orders</Typography>
+      <Typography component="h3" variant="h5">My orders</Typography>
       <Divider />
       <OrdersList />
     </StyledUniversalContainer>

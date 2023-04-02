@@ -12,7 +12,7 @@ import { StyledUniversalContainer } from '../../components/building-blocks/build
 const Home = () => {
   const dispatch = useDispatch()
   const pizzasList = useSelector(selectPizzas);
-  const areBannersVisible = useMemo(() => window.innerWidth > 1100 ? true : false, [window])
+  const areBannersVisible = useMemo(() => window.innerWidth > 900 ? true : false, [window])
   useEffect(() => {
     dispatch(fetchPizzas())
   }, [])

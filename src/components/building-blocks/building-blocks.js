@@ -26,9 +26,7 @@ export const OrderItemBox = styled(Box)`
 
 export const StyledUniversalContainer = styled(Box)`
   padding: 0 1.5rem;
-  &:not(&:first-child){
-    margin-top: 25px;
-  }
+  margin-top: 25px;
   @media (min-width: 768px) {
     padding: 0 3rem;
   }
@@ -42,6 +40,7 @@ export const StyledButton = styled(Button)`
   text-align: center;
   font-size: 18px;
   text-transform: none;
+  width: ${props => props.isLoggedIn ? '100%' : 'fit-content'};
 `;
 
 export const ArrowButton = styled(Button)`
@@ -100,6 +99,7 @@ export const BannerImage = styled(LazyLoadImage)`
 
 export const Header = styled(StyledUniversalContainer)`
   gap: 3rem;
+  margin-top: 0;
   padding-top: 25px !important;
   padding-bottom: 25px !important;
   position: sticky;
@@ -114,7 +114,7 @@ export const Header = styled(StyledUniversalContainer)`
 
 export const HeaderLink = styled(Link)`
   flex: 1 1 33%;
-  &:nth-child(2){
+  &:nth-of-type(2){
     text-align: center;
   }
 `
@@ -125,4 +125,7 @@ export const HeaderUserButtons = styled(Box)`
   justify-content: flex-end;
   gap: 25%;
   align-items: center;
+`
+export const PizzaCategoryContainer = styled(Box)`
+  width: 100%;
 `
