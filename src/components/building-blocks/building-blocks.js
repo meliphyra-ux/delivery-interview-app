@@ -125,6 +125,9 @@ export const HeaderUserButtons = styled(Box)`
   justify-content: flex-end;
   gap: 25%;
   align-items: center;
+  @media (max-width: 600px){
+    gap: 15px;
+  }
 `
 export const PizzaCategoryContainer = styled(Box)`
   width: 100%;

@@ -40,17 +40,16 @@ const App = () => {
   }, [user]);
   return (
     <BrowserRouter>
+      <Navigation />
       <Suspense>
         <Routes>
-          <Route path="/" element={<Navigation />}>
-            <Route index element={<Home />} />
-            <Route path="my-orders" element={<MyOrders />} />
-            <Route path="/my-orders/:id" element={<OrderDetails />} />
-            <Route path="cart" element={<Cart />} />
-          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="my-orders" element={<MyOrders />} />
+          <Route path="/my-orders/:id" element={<OrderDetails />} />
+          <Route path="cart" element={<Cart />} />
         </Routes>
         <ModalWindow />
-      </Suspense> 
+      </Suspense>
     </BrowserRouter>
   );
 };

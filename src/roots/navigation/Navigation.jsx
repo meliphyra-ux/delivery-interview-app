@@ -1,22 +1,20 @@
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import { Outlet } from 'react-router-dom';
-
 import AuthButton from '../../components/auth-button/Auth-button';
 import CartIcon from '../../components/cart-icon/Cart-icon';
 import DashboardMenu from '../../components/user-menu/Dashboard-menu';
 
-import { Typography, Button, Divider } from '@mui/material';
+import { Typography, Divider } from '@mui/material';
 import {
   Header,
   HeaderLink,
   HeaderUserButtons,
 } from '../../components/building-blocks/building-blocks';
+import { AccountBox } from '@mui/icons-material';
 
 const Navigation = () => {
   const { user } = useAuth0();
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -42,17 +40,9 @@ const Navigation = () => {
           {!user ? (
             <AuthButton />
           ) : (
-            <Button
-              onClick={handleOpen}
-              sx={{
-                color: 'black',
-                textAlign: 'center',
-                fontSize: '18px',
-                textTransform: 'none',
-              }}
-            >
-              Dashboard
-            </Button>
+            <AccountBox onClick={handleOpen} sx={{
+              cursor: 'pointer'
+            }} fontSize="large" />
           )}
           <DashboardMenu
             open={open}
@@ -63,7 +53,6 @@ const Navigation = () => {
         </HeaderUserButtons>
       </Header>
       <Divider />
-      <Outlet />
     </>
   );
 };
