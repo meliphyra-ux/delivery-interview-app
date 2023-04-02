@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectPizzas } from '../../store/pizza/pizzasSelectors';
@@ -12,12 +12,13 @@ import { StyledUniversalContainer } from '../../components/building-blocks/build
 const Home = () => {
   const dispatch = useDispatch()
   const pizzasList = useSelector(selectPizzas);
+  const areBannersVisible = useMemo(() => window.innerWidth > 900 ? true : false, [window])
   useEffect(() => {
     dispatch(fetchPizzas())
   }, [])
   return (
-    <StyledUniversalContainer className="min-h-[calc(100vh-200px)] flex flex-col items-center">
-      <BannerCarousel />
+    <StyledUniversalContainer component="article" className="min-h-[calc(100vh-200px)] flex flex-col items-center">
+      {areBannersVisible && <BannerCarousel />}
       {pizzasList.map((pizzaType) => (
         <PizzaCategory key={pizzaType.title} pizzaType={pizzaType} />
       ))}

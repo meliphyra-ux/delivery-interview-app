@@ -1,46 +1,29 @@
-import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import {
+  BannerImageContainer,
+  BannerInfoContainer,
+  BannerTypography,
+  BannerImage
+} from '../building-blocks/building-blocks';
 
-const CarouselItem = ({ counter, banner: { src, title, description }}) => {
+const CarouselItem = ({ counter, banner: { src, title, description } }) => {
   return (
-    <Box className="w-full flex-none relative">
-      <Box
-        className="flex p-24 flex-col justify-center absolute bg-[rgba(0,0,0,0.5)] z-20 top-0 w-full h-full text-white"
-        sx={{
-          left: -counter * 100 + '%',
-        }}
-      >
-        <Typography
-          variant="h3"
-          sx={{
-            margin: '20px 0',
-          }}
-        >
+    <BannerImageContainer counter={counter}>
+      <BannerInfoContainer>
+        <BannerTypography variant="h3" component="h2">
           {title}
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            margin: '20px 0',
-            fontSize: '24px'
-          }}
-        >
+        </BannerTypography>
+        <BannerTypography component="p" variant="h5">
           {description}
-        </Typography>
-      </Box>
-      <LazyLoadImage
-        className="object-cover aspect-video"
-        style={{
-          display: 'inline-block',
-          transition: 'transform 0.3s ease',
-          transform: `translateX(-${counter * 100}%)`,
-        }}
-        width={1200}
-        height={900}
+        </BannerTypography>
+      </BannerInfoContainer>
+      <BannerImage
+        width={900}
+        height={700}
         src={src}
         alt={title}
       />
-    </Box>
+    </BannerImageContainer>
   );
 };
 

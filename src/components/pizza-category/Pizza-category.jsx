@@ -1,14 +1,15 @@
 import PizzaCard from '../pizza-card/Pizza-card';
+import { PizzaCategoryContainer } from '../building-blocks/building-blocks'
 
 import { Divider, Typography } from '@mui/material';
 
 const PizzaCategory = ({ pizzaType }) => {
   return (
-    <div>
+    <PizzaCategoryContainer component="section">
       <Typography
         variant="h4"
         sx={{
-          marginTop: '16px',
+          marginTop: '16px'
         }}
       >
         {pizzaType.title}
@@ -23,7 +24,7 @@ const PizzaCategory = ({ pizzaType }) => {
           <PizzaCard key={pizza.name} pizza={pizza} />
         ))}
       </div>
-    </div>
+    </PizzaCategoryContainer>
   );
 };
 
