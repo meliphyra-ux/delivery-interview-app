@@ -1,1 +1,1 @@
-export const selectPizzas = state => state.pizzas
+export const selectPizzas = (state) => state.pizzas

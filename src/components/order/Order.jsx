@@ -13,8 +13,6 @@ const OrderBox = styled(Box)`
 
 const Order = ({ orderParams }) => {
   const { id, time, totalPrice } = orderParams;
-  const date = new Date();
-  date.setSeconds(time.seconds)
   return (
     <Link className="w-full" to={id}>
       <OrderBox>
@@ -22,7 +20,7 @@ const Order = ({ orderParams }) => {
         <div>
           <Typography variant="body1">{totalPrice}</Typography>
           <Typography variant="body1">
-            {date.toDateString()}
+            {time && time.toDate().toDateString()}
           </Typography>
         </div>
       </OrderBox>

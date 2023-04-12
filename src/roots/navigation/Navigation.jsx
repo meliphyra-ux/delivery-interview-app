@@ -28,7 +28,7 @@ const Navigation = () => {
   return (
     <>
       <Header component="header">
-        <HeaderLink href="tel:+380992395067" component="h3" variant="h6">
+        <HeaderLink to="tel:+380992395067" component="h3" variant="h6">
           +38(099)2395067
         </HeaderLink>
         <HeaderLink to="/">
@@ -40,9 +40,13 @@ const Navigation = () => {
           {!user ? (
             <AuthButton />
           ) : (
-            <AccountBox onClick={handleOpen} sx={{
-              cursor: 'pointer'
-            }} fontSize="large" />
+            <AccountBox
+              onClick={handleOpen}
+              sx={{
+                cursor: 'pointer',
+              }}
+              fontSize="large"
+            />
           )}
           <DashboardMenu
             open={open}

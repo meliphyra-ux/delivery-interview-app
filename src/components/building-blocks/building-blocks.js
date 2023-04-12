@@ -40,7 +40,7 @@ export const StyledButton = styled(Button)`
   text-align: center;
   font-size: 18px;
   text-transform: none;
-  width: ${props => props.isLoggedIn ? '100%' : 'fit-content'};
+  width: ${(props) => (props.isLoggedIn ? '100%' : 'fit-content')};
 `;
 
 export const ArrowButton = styled(Button)`
@@ -50,7 +50,7 @@ export const ArrowButton = styled(Button)`
   z-index: 100;
   color: #f2f2f2;
   height: 100%;
-  ${props => props.position === 'left' ? 'left: 0' : 'right: 0'}
+  ${(props) => (props.position === 'left' ? 'left: 0' : 'right: 0')}
 `;
 
 export const BannerCarouselBox = styled(Box)`
@@ -70,7 +70,7 @@ export const BannerImageContainer = styled(Box)`
   flex: none;
   position: relative;
   transition: transform 0.2s ease-in-out;
-  transform: translateX(-${props => props.counter * 100}%);
+  transform: translateX(-${(props) => props.counter * 100}%);
 `;
 export const BannerInfoContainer = styled(Box)`
   width: 100%;
@@ -104,20 +104,20 @@ export const Header = styled(StyledUniversalContainer)`
   padding-bottom: 25px !important;
   position: sticky;
   top: 0;
-  z-index: 25;
+  z-index: 150;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(255,255,255, 0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(5px);
-`
+`;
 
 export const HeaderLink = styled(Link)`
   flex: 1 1 33%;
-  &:nth-of-type(2){
+  &:nth-of-type(2) {
     text-align: center;
   }
-`
+`;
 
 export const HeaderUserButtons = styled(Box)`
   flex: 1 1 33%;
@@ -125,10 +125,10 @@ export const HeaderUserButtons = styled(Box)`
   justify-content: flex-end;
   gap: 25%;
   align-items: center;
-  @media (max-width: 600px){
+  @media (max-width: 600px) {
     gap: 15px;
   }
-`
+`;
 export const PizzaCategoryContainer = styled(Box)`
   width: 100%;
-`
+`;
