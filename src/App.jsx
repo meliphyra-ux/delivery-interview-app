@@ -17,6 +17,8 @@ const ModalWindow = lazy(() =>
 const OrderDetails = lazy(() => import('./roots/order-details/Order-details'));
 
 import './App.scss';
+import Footer from './components/footer/Footer';
+import Login from './roots/login/Login';
 
 const App = () => {
   const { user } = useAuth0();
@@ -44,10 +46,12 @@ const App = () => {
       <Suspense>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="my-orders" element={<MyOrders />} />
+          <Route path="/my-orders" element={<MyOrders />} />
           <Route path="/my-orders/:id" element={<OrderDetails />} />
-          <Route path="cart" element={<Cart />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
+        <Footer />
         <ModalWindow />
       </Suspense>
     </BrowserRouter>

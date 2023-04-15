@@ -26,6 +26,7 @@ const BannerCarousel = () => {
   };
 
   const handleIncrement = () => handleCount('increment');
+
   const handleDecrement = () => handleCount('decrement');
 
   useEffect(() => {

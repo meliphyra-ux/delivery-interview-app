@@ -6,17 +6,8 @@ import {
   selectModalText,
 } from '../../store/modal/modalSelectors';
 
-import styled from '@emotion/styled';
-import { Box, Button, Modal, Typography } from '@mui/material';
-
-const ModalBox = styled(Box)`
-  margin: 20px;
-  border-radius: 4px;
-  background-color: #222222;
-  color: #f2f2f2;
-  width: clamp(380px, 60vw, 650px);
-  height: max-content;
-`;
+import { ModalBox } from '../building-blocks/building-blocks';
+import { Button, Modal, Typography } from '@mui/material';
 
 const ModalWindow = () => {
   const isOpen = useSelector(selectModalStatus);

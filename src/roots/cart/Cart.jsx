@@ -1,31 +1,22 @@
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
 
 import CartContent from '../../components/cart-content/Cart-content';
-import AuthButton from '../../components/auth-button/Auth-button';
-
-import { Box, Typography } from '@mui/material';
-import { StyledUniversalContainer } from '../../components/building-blocks/building-blocks';
+import { useEffect } from 'react';
 
 const Cart = () => {
   const { user, isLoading } = useAuth0();
+  const navigate = useNavigate()
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  return (
-    <>
-      {user ? (
-        <CartContent />
-      ) : (
-        <StyledUniversalContainer className="flex items-center flex-col justify-center min-h-[calc(100vh-200px)]">
-          <Typography variant="h4">Hey, you haven't login yet.</Typography>
-          <Typography variant="h5">You can do it right now</Typography>
-          <Box className="sketchy px-4">
-            <AuthButton />
-          </Box>
-        </StyledUniversalContainer>
-      )}
-    </>
-  );
+  useEffect(() => {
+    if(!isLoading && !user){
+      console.log('redirect')
+      navigate('/login')
+    }
+  }, [isLoading, user])
+  return <CartContent />;
 };
 
 export default Cart;
